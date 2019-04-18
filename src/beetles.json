@@ -1,0 +1,34 @@
+[
+    {
+        "id": 1,
+        "url": "./images/beetle1.png"
+    },
+    {
+        "id": 2,
+        "url": "./images/beetle2.png"
+    },
+    {
+        "id": 3,
+        "url": "./images/beetle3.png"
+    },
+    {
+        "id": 4,
+        "url": "./images/beetle4.png"
+    },
+    {
+        "id": 5,
+        "url": "./images/beetle5.png"
+    },
+    {
+        "id": 6,
+        "url": "./images/beetle6.png"
+    },
+    {
+        "id": 7,
+        "url": "./images/beetle7.png"
+    },
+    {
+        "id": 8,
+        "url": "./images/beetle8.png"
+    }
+]

@@ -1,0 +1,9 @@
+.card {
+    border: 0.25vw solid black;
+    width:250px;
+    height:250px;
+}
+
+.card:hover {
+    border: 0.25vw solid white;
+}
