@@ -1,3 +1,4 @@
 body {
-    background: url(images/background.jpg) repeat center 5vw fixed;
+    background: url(images/background.jpg) repeat-x fixed;
+    background-size: 12%;
 }
