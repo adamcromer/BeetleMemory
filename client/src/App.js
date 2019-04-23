@@ -3,6 +3,7 @@ import Nav from "./components/Nav";
 import Body from "./components/Body";
 import Card from "./components/Card";
 import beetles from "./beetles.json";
+import "./App.css";
 
 class App extends Component {
 
