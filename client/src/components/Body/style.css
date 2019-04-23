@@ -1,0 +1,13 @@
+.score {
+    border: 0.25vw solid black;
+    color: black;
+    background-color:#ea9d73;
+    width: 100%;
+    height: 5vw;
+    margin-top: 0;
+    margin-bottom: 1vw;
+}
+
+.scoreTitle {
+    margin-left: 15%;
+}
