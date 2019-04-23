@@ -8,7 +8,7 @@ import "./App.css";
 class App extends Component {
 
   state = {
-    beetles
+    beetles: beetles
   };
 
   render() {
