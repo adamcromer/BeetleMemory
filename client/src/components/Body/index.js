@@ -11,22 +11,29 @@ class Body extends Component {
             beetles: beetles,
             currentScore: 0,
             highScore: 0,
-            clickedArray: []
+            notClickedArray: [0, 1, 2, 3, 4, 5, 6, 7],
+            clickedArray: [],
+            shuffledArray: [0, 1, 2, 3, 4, 5, 6, 7]
+
         }
     }
 
-    shuffle = beetles => {
-        for (var i = (beetles.length - 1); i > 0; i--) {
-            var j = Math.floor(Math.random() * (i + 1));
-            var temp = beetles[i];
-            beetles[i] = beetles[j];
-            beetles[j] = temp;
+    shuffle = () => {
+        let array = this.state.shuffledArray;
+        for (var i = 0; i < array.length; i++) {
+            var randomNumber = Math.floor(Math.random() * (i + 1));
+            var temp = array[i];
+            array[i] = array[randomNumber];
+            array[randomNumber] = temp;
         }
-        return beetles;
+        this.setState({
+            shuffledArray: array
+        })
     }
 
     beetleClick = (event, id) => {
         event.preventDefault();
+        // console.log(this.shuffle(this.state.notClickedArray));
 
         let newScore = this.state.currentScore + 1;
         if (newScore < 9) {
@@ -34,6 +41,7 @@ class Body extends Component {
                 currentScore: newScore
             });
         }
+        this.shuffle();
     }
 
     loadScore = () => {
@@ -85,12 +93,12 @@ class Body extends Component {
         return (
             <div className="body">
                 {this.loadScore()}
-                {this.state.beetles.map(beetle => (
+                {this.state.shuffledArray.map(index => (
                     <Card
                         className="beetle"
-                        id={beetle.id}
-                        key={beetle.id}
-                        url={beetle.url}
+                        id={this.state.beetles[index].id}
+                        key={this.state.beetles[index].id}
+                        url={this.state.beetles[index].url}
                         clickFunction={e => this.beetleClick(e)}
                     />
                 ))}
