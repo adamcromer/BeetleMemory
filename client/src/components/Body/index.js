@@ -11,10 +11,10 @@ class Body extends Component {
             beetles: beetles,
             currentScore: 0,
             highScore: 0,
-            notClickedArray: [0, 1, 2, 3, 4, 5, 6, 7],
             clickedArray: [],
-            shuffledArray: [0, 1, 2, 3, 4, 5, 6, 7]
-
+            shuffledArray: [0, 1, 2, 3, 4, 5, 6, 7],
+            isInArray: false,
+            winOrLose: ""
         }
     }
 
@@ -31,9 +31,17 @@ class Body extends Component {
         })
     }
 
-    beetleClick = (event, id) => {
-        event.preventDefault();
-        // console.log(this.shuffle(this.state.notClickedArray));
+    beetleClick = (id) => {
+        // if (this.stateclickedArray =! []) {
+
+        // }
+        this.state.clickedArray.forEach(number => {
+            if (id === number) {
+                this.setState({
+                    isInArray: true
+                })
+            }
+        });
 
         let newScore = this.state.currentScore + 1;
         if (newScore < 9) {
@@ -46,7 +54,7 @@ class Body extends Component {
 
     loadScore = () => {
         if (this.state.currentScore > 7) {
-            return this.winDiv();
+            this.win();
         } else {
             return this.scoreDiv();
         }
@@ -59,21 +67,42 @@ class Body extends Component {
                 highScore: this.state.currentScore
             })
         }
+
+        if (this.state.isInArray === true) {
+            this.lose();
+        }
     }
 
-    reset = (event) => {
-        event.preventDefault();
+    lose = () => {
         this.setState({
-            currentScore: 0
-        })
+            winOrLose: "Sorry, you lose."
+        });
+        this.winOrLoseDiv();
+        this.reset();
     }
 
-    winDiv = () => {
+    win = () => {
+        this.setState({
+            winOrLose: "You win!"
+        });
+        this.winOrLoseDiv();
+        this.reset();
+    }
+
+    reset = () => {
+        this.setState({
+            currentScore: 0,
+            isInArray: false
+        });
+        this.shuffle();
+    }
+
+    winOrLoseDiv = () => {
         return (
             <div className="win winOrScore">
-                <h1 className="float-left winTitle">You win!</h1>
+                <h1 className="float-left winTitle">{this.state.winOrLose}</h1>
                 <button className="float-left scoreTitle button btn btn-lg"
-                    onClick={e => this.reset(e)}>
+                    onClick={this.reset}>
                     Play again?
                 </button>
             </div>
@@ -99,7 +128,7 @@ class Body extends Component {
                         id={this.state.beetles[index].id}
                         key={this.state.beetles[index].id}
                         url={this.state.beetles[index].url}
-                        clickFunction={e => this.beetleClick(e)}
+                        clickFunction={this.beetleClick}
                     />
                 ))}
             </div>

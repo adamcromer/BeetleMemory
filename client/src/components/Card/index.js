@@ -7,7 +7,7 @@ function Card(props) {
         alt=""
         id={props.id}
         src={props.url} 
-        onClick={props.clickFunction} />
+        onClick={() => props.clickFunction(props.id)} />
 }
 
 export default Card;
